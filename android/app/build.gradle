@@ -33,6 +33,7 @@ android {
     }
 
     lintOptions {
+        checkReleaseBuilds false
         disable 'InvalidPackage'
     }
 
@@ -41,6 +42,7 @@ android {
         applicationId "com.CPTech.toggl_client_app"
         minSdkVersion 19
         targetSdkVersion 29
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }

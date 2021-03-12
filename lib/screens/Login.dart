@@ -31,8 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var userProvider = context.watch()<UserProvider>();
-
     return Scaffold(
       appBar: AppBar(
         // iconTheme: IconThemeData(color: Theme.of(context).primaryColor),
@@ -127,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               _emailController.text, _passwordController.text)
                           .then((value) async {
                         if (value.containsKey(true)) {
-                          userProvider.onNewUser(value.values.first.user);
+                          context.read()<UserProvider>().onNewUser(value.values.first.user);
                           await LocalStorage().saveUser(value.values.first.user);
                           await LocalStorage().rememberUser();
                           Navigator.pushAndRemoveUntil(context,
