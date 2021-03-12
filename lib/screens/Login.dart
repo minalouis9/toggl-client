@@ -125,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               _emailController.text, _passwordController.text)
                           .then((value) async {
                         if (value.containsKey(true)) {
-                          context.read()<UserProvider>().onNewUser(value.values.first.user);
+                          context.read<UserProvider>().onNewUser(value.values.first.user);
                           await LocalStorage().saveUser(value.values.first.user);
                           await LocalStorage().rememberUser();
                           Navigator.pushAndRemoveUntil(context,
